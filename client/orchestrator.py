@@ -22,7 +22,7 @@ async def filesystem_operation():
 
 async def database_operation():
     async with streamablehttp_client(
-        "http://127.0.0.1:8000/mcp"
+        "http://127.0.0.1:8001/mcp"
     ) as (read_stream, write_stream, _):
 
         async with ClientSession(read_stream, write_stream) as session:
@@ -39,24 +39,27 @@ async def database_operation():
 
 async def main():
 
-    choice = input(
-        "1. List Files\n"
-        "2. Show Students\n"
-        "3. Exit\n"
-        "Enter choice: "
-    )
+    while True:
 
-    if choice == "1":
-        await filesystem_operation()
+        choice = input(
+            "\n1. List Files\n"
+            "2. Show Students\n"
+            "3. Exit\n"
+            "Enter choice: "
+        )
 
-    elif choice == "2":
-        await database_operation()
+        if choice == "1":
+            await filesystem_operation()
 
-    elif choice == "3":
-        print("Goodbye")
+        elif choice == "2":
+            await database_operation()
 
-    else:
-        print("Invalid choice")
+        elif choice == "3":
+            print("Goodbye")
+            break
+
+        else:
+            print("Invalid choice")
 
 
 asyncio.run(main())

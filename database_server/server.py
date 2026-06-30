@@ -21,4 +21,5 @@ def get_students():
 
 if __name__ == "__main__":
     print("Database MCP Server Running...")
+    mcp.settings.port = 8001
     mcp.run(transport="streamable-http")

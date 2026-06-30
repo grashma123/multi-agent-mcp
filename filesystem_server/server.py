@@ -12,5 +12,6 @@ def get_file_content(filename: str):
     return read_file(filename)
 
 if __name__ == "__main__":
-    print("MCP Server Running...")
+    print("Filesystem MCP Server Running...")
+    mcp.settings.port = 8000
     mcp.run(transport="streamable-http")
